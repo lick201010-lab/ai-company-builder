@@ -4,9 +4,8 @@ export const docsRoute = '/docs';
 export const docsImageRoute = '/og/docs';
 export const docsContentRoute = '/llms.mdx/docs';
 
-// TODO: 替换成你的真实 GitHub 仓库
 export const gitConfig = {
-  user: 'your-github-username',
+  user: 'lick201010-lab',
   repo: 'ai-company-builder',
   branch: 'main',
 };
