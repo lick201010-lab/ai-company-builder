@@ -1,0 +1,236 @@
+---
+title: 第 1 章 · 安装与登录
+description: 装 Node.js、装 Claude Code、第一次登录并跑通"Hello"。
+---
+
+跑完本章你会得到一个**能在任意文件夹打开终端、敲 `claude` 就能跟 AI 对话的环境**。预计 15 分钟。
+
+<Callout type="info">
+**预先备好：** 一张能开通海外订阅的信用卡（Visa/Master）。Claude 需要付费才能用，最便宜路线是 $5 API 信用 ≈ ¥36，足够你跑完本套教程的全部演练。
+</Callout>
+
+## Step 1 · 装 Node.js
+
+Claude Code 用 Node.js 跑，所以先装 Node。
+
+<Tabs items={['Windows', 'macOS', 'Linux']}>
+
+<Tab value="Windows">
+
+1. 打开 https://nodejs.org/zh-cn/download
+2. 下载 **LTS（长期支持）版本**——目前是 v20.x 或 v22.x。**不要选 Current 版**（不稳定）
+3. 双击下载好的 `.msi` 安装包，**全部默认下一步**直到完成
+4. 安装完后**关掉所有打开的终端窗口**，重开一个新的 PowerShell（开始菜单搜 "PowerShell"）
+5. 敲下面命令验证：
+
+```powershell
+node --version
+npm --version
+```
+
+应该输出类似 `v22.x.x` 和 `10.x.x`。
+
+</Tab>
+
+<Tab value="macOS">
+
+推荐用 [Homebrew](https://brew.sh/index_zh-cn) 装（最干净）：
+
+```bash
+brew install node
+```
+
+没装过 Homebrew 的话：
+
+```bash
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
+或者也可以从 https://nodejs.org/zh-cn/download 下载 `.pkg` 安装包。
+
+验证：
+
+```bash
+node --version
+npm --version
+```
+
+</Tab>
+
+<Tab value="Linux">
+
+用你发行版的包管理器，或者用 [nvm](https://github.com/nvm-sh/nvm)（最稳）：
+
+```bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+# 重启 shell 或 source ~/.bashrc
+nvm install --lts
+nvm use --lts
+```
+
+验证：
+
+```bash
+node --version
+npm --version
+```
+
+</Tab>
+
+</Tabs>
+
+<Callout type="warn">
+**避坑：** 如果敲 `node --version` 报"找不到命令"，几乎肯定是因为 PATH 没生效——**关掉所有终端、重开一个新的**就行。还是不行的话，重启电脑。
+</Callout>
+
+## Step 2 · 装 Claude Code
+
+终端敲：
+
+```bash
+npm install -g @anthropic-ai/claude-code
+```
+
+`-g` 表示装到全局，这样在哪个文件夹都能用 `claude` 这个命令。
+
+<Callout type="warn">
+**Windows / macOS 权限报错（EACCES / permission denied）：**
+
+不要用 `sudo`！正确做法是改 npm 的全局目录到你的家目录：
+
+```bash
+mkdir -p ~/.npm-global
+npm config set prefix ~/.npm-global
+echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.bashrc  # 或 ~/.zshrc
+source ~/.bashrc
+```
+
+然后重新跑 `npm install -g @anthropic-ai/claude-code`。
+</Callout>
+
+验证安装：
+
+```bash
+claude --version
+```
+
+看到版本号就装好了。
+
+## Step 3 · 注册 Anthropic 账号 & 选择付费方式
+
+打开 https://console.anthropic.com 用邮箱注册。
+
+进了控制台后，你有两种付费路径：
+
+<Cards>
+
+<Card title="路径 A · Claude Pro / Max 订阅（推荐新手）">
+
+**¥149/月起（Pro）**，可在 Claude Code 里直接用，**额度足够个人用一整月**。
+
+适合：想固定支出、不想盯账单的人。
+
+[去订阅 Claude Pro →](https://www.anthropic.com/pricing)
+
+</Card>
+
+<Card title="路径 B · API 按量付费">
+
+**最低充值 $5 ≈ ¥36**，按调用次数扣费，跑完本套教程大约花 ¥3-10。
+
+适合：想先试试水的人。但要小心多 agent 编排时 token 用得快，建议设置每月用量上限。
+
+[去 API Keys →](https://console.anthropic.com/settings/keys)
+
+</Card>
+
+</Cards>
+
+<Callout type="info">
+**推荐：** 先充 $5 API 信用跑完本套教程，确认有用之后再决定要不要订阅 Pro。
+</Callout>
+
+## Step 4 · 第一次登录
+
+回终端敲：
+
+```bash
+claude login
+```
+
+会自动打开浏览器（或显示一个链接让你复制到浏览器）——登录你的 Anthropic 账号、点"授权"，自动返回终端。
+
+看到类似 `Logged in as you@example.com` 就成功了。
+
+## Step 5 · 跑通第一个"Hello"
+
+随便建一个文件夹用来测试：
+
+```bash
+mkdir my-first-ai-team
+cd my-first-ai-team
+claude
+```
+
+第一次进入会显示一些欢迎信息，然后给你一个输入提示。试着问：
+
+```
+你是谁？我能让你帮我做什么？
+```
+
+回车后等几秒，你会看到 Claude 给你一段中文回复。
+
+🎉 **恭喜你**——你现在已经有了一个能在自己电脑上跑的 AI 助手了。
+
+按 `Ctrl+C` 或者敲 `/exit` 退出 Claude Code。
+
+## 常见问题
+
+<Accordions type="single">
+
+<Accordion title="claude 命令找不到？">
+
+PATH 没生效。
+
+- **macOS / Linux：** 重开终端，或者 `source ~/.zshrc` / `source ~/.bashrc`
+- **Windows：** 关掉所有 PowerShell 窗口重新打开。还不行就重启电脑
+
+</Accordion>
+
+<Accordion title="登录时浏览器打不开？">
+
+终端里会显示一个长链接（以 `https://console.anthropic.com/...` 开头）——**手动复制**这个链接，粘到浏览器里打开就行。
+
+</Accordion>
+
+<Accordion title="国内用户：网络连不通 Anthropic？">
+
+Claude API 在国内不能直连，**必须**通过代理。如果你不熟悉怎么配，先解决网络问题再继续。
+
+或者考虑[第三条路线：OpenHermes 本地路线](/docs/openhermes)——完全本地跑，不需要代理。
+
+</Accordion>
+
+<Accordion title="提示要绑信用卡才能继续？">
+
+正常。Anthropic 要求注册时验证支付方式。Pro 订阅是月扣 ¥149，API 是预充值。两个都需要海外 Visa/Master 卡。
+
+</Accordion>
+
+</Accordions>
+
+## 你已经会了
+
+- ✅ 装好了 Node.js
+- ✅ 装好了 Claude Code CLI
+- ✅ 注册了 Anthropic 账号 + 选了付费方式
+- ✅ 登录成功
+- ✅ 跑通了第一个对话
+
+下一章我们让 Claude Code "认识你的业务"——不再是个通用 AI 助手，而是懂你做什么的专属同事。
+
+---
+
+<Cards>
+  <Card title="下一章 → 项目配置（CLAUDE.md）" href="/docs/claude-code/config" />
+</Cards>

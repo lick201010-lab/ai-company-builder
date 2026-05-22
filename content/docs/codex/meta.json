@@ -1,0 +1,6 @@
+{
+  "title": "Codex 路线",
+  "description": "OpenAI 出的 Agent CLI · 适合 ChatGPT 用户",
+  "icon": "Bot",
+  "pages": ["index", "install"]
+}

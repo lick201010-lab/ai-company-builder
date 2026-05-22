@@ -1,0 +1,13 @@
+{
+  "title": "VE 指南",
+  "pages": [
+    "index",
+    "---主线教程---",
+    "claude-code",
+    "codex",
+    "openhermes",
+    "---资源---",
+    "templates",
+    "tools"
+  ]
+}

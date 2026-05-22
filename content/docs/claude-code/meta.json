@@ -1,0 +1,14 @@
+{
+  "title": "Claude Code 路线",
+  "description": "Anthropic 官方 CLI · 推理最强 · 生态最成熟",
+  "icon": "Sparkles",
+  "pages": [
+    "index",
+    "install",
+    "config",
+    "first-agent",
+    "knowledge",
+    "orchestration",
+    "advanced"
+  ]
+}

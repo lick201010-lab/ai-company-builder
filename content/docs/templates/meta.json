@@ -1,0 +1,6 @@
+{
+  "title": "模板包",
+  "description": "可下载的 AI 团队预制配置——下载即用",
+  "icon": "Package",
+  "pages": ["index", "solo-creator", "ecommerce", "consultant"]
+}

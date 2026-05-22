@@ -1,0 +1,45 @@
+---
+title: 第 1 章 · 安装 Ollama + OpenHermes
+description: 在本机装 Ollama 框架、下载 OpenHermes 模型、跑通第一次对话。
+---
+
+<Callout type="info">
+**本章状态：撰写中**。
+
+短版（如果你想立即开始）：
+
+1. 装 [Ollama](https://ollama.com/download)（一键安装包）
+2. 终端敲 `ollama pull hermes3:8b`（下模型，约 5GB）
+3. 敲 `ollama run hermes3:8b`，开始对话
+4. 如果显卡显存够，可以拉更大的 `hermes3:70b`（质量大幅提升，但需要 48GB+ 显存）
+
+</Callout>
+
+## 硬件检查
+
+在开始前先确认你的电脑能跑：
+
+| 显存 | 能跑的模型 | 体验 |
+|---|---|---|
+| < 8GB | hermes3:3b | 慢、能用，但质量差 |
+| 8-12GB | hermes3:8b | 流畅，质量过得去 |
+| 16GB+ | hermes3:8b (Q8) | 流畅，质量好 |
+| 24GB+ | hermes3:14b 或 hermes3:70b (量化版) | 流畅，质量逼近 GPT-4 |
+| 48GB+ | hermes3:70b (高精度) | 最强本地体验 |
+
+**没显卡 / Mac M 系列芯片：** 也能跑！Mac 用统一内存，**M2 Pro 16GB / M3 / M4** 跑 hermes3:8b 都很流畅。
+
+## 即将补全的内容
+
+- Ollama 完整安装流程（Windows / macOS / Linux 三平台）
+- 怎么挑选合适的 OpenHermes 版本
+- 第一次对话的命令行示例
+- 配 Open WebUI 让它有图形界面
+- 速度调优（GPU 分层、上下文长度）
+- 常见报错排查
+
+---
+
+<Cards>
+  <Card title="← 主线总览" href="/docs/openhermes" />
+</Cards>

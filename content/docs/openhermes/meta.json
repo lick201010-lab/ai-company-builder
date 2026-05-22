@@ -1,0 +1,6 @@
+{
+  "title": "OpenHermes 路线",
+  "description": "本地跑 · 完全免费 · 隐私不出本机",
+  "icon": "Cpu",
+  "pages": ["index", "install"]
+}
